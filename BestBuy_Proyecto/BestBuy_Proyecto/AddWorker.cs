@@ -10,11 +10,20 @@ using System.Windows.Forms;
 
 namespace BestBuy_Proyecto
 {
-    public partial class Form1 : Form
+    public partial class AddWorker : Form
     {
-        public Form1()
+        private Form retDashboard;
+
+        public AddWorker(Form formDashboard)
         {
             InitializeComponent();
+            retDashboard = formDashboard;
+        }
+
+        private void button1_Click(object sender, EventArgs e) 
+        {
+            retDashboard.Show();     
+            this.Close();
         }
     }
 }
