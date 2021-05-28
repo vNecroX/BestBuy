@@ -88,4 +88,9 @@ VALUES
     (2, 'Estante de enfriamiento plegable', 487.92, 10),
     (2, 'Mouse alambrico Steren COM-566', 62.30, 10),
     (2, 'HDD externo Adata 1TB Hd770g', 1197.99, 10);
+
+INSERT INTO cliente
+    (nombre_cliente, nombre_usuario, pssw_usuario)
+VALUES
+    ('Daniela','danis8', 'amiz88');
     
