@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.pnlDashboard = new System.Windows.Forms.Panel();
+            this.lblLog = new System.Windows.Forms.Label();
+            this.lblProducto = new System.Windows.Forms.Label();
+            this.picBoxLog = new System.Windows.Forms.PictureBox();
+            this.picBoxProduct = new System.Windows.Forms.PictureBox();
             this.picBoxProducts = new System.Windows.Forms.PictureBox();
             this.picBoxUsers = new System.Windows.Forms.PictureBox();
             this.picBoxWorkers = new System.Windows.Forms.PictureBox();
-            this.picBoxLog = new System.Windows.Forms.PictureBox();
-            this.picBoxProduct = new System.Windows.Forms.PictureBox();
-            this.lblProducto = new System.Windows.Forms.Label();
-            this.lblLog = new System.Windows.Forms.Label();
             this.lblWorkers = new System.Windows.Forms.Label();
             this.lblUsers = new System.Windows.Forms.Label();
             this.lblProducts = new System.Windows.Forms.Label();
@@ -44,11 +44,11 @@
             this.lblHMproducts = new System.Windows.Forms.Label();
             this.lblAddWorker = new System.Windows.Forms.Label();
             this.pnlDashboard.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxLog)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxWorkers)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBoxLog)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBoxProduct)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlDashboard
@@ -63,6 +63,47 @@
             this.pnlDashboard.Name = "pnlDashboard";
             this.pnlDashboard.Size = new System.Drawing.Size(145, 239);
             this.pnlDashboard.TabIndex = 1;
+            // 
+            // lblLog
+            // 
+            this.lblLog.AutoSize = true;
+            this.lblLog.Location = new System.Drawing.Point(38, 207);
+            this.lblLog.Name = "lblLog";
+            this.lblLog.Size = new System.Drawing.Size(64, 17);
+            this.lblLog.TabIndex = 3;
+            this.lblLog.Text = "Logistica";
+            // 
+            // lblProducto
+            // 
+            this.lblProducto.AutoSize = true;
+            this.lblProducto.Location = new System.Drawing.Point(38, 85);
+            this.lblProducto.Name = "lblProducto";
+            this.lblProducto.Size = new System.Drawing.Size(65, 17);
+            this.lblProducto.TabIndex = 2;
+            this.lblProducto.Text = "Producto";
+            // 
+            // picBoxLog
+            // 
+            this.picBoxLog.Image = global::BestBuy_Proyecto.Properties.Resources.aTable;
+            this.picBoxLog.Location = new System.Drawing.Point(24, 144);
+            this.picBoxLog.Name = "picBoxLog";
+            this.picBoxLog.Size = new System.Drawing.Size(91, 62);
+            this.picBoxLog.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBoxLog.TabIndex = 1;
+            this.picBoxLog.TabStop = false;
+            this.picBoxLog.Click += new System.EventHandler(this.picBoxLog_Click);
+            // 
+            // picBoxProduct
+            // 
+            this.picBoxProduct.Image = global::BestBuy_Proyecto.Properties.Resources.aLaptop1;
+            this.picBoxProduct.InitialImage = null;
+            this.picBoxProduct.Location = new System.Drawing.Point(24, 22);
+            this.picBoxProduct.Name = "picBoxProduct";
+            this.picBoxProduct.Size = new System.Drawing.Size(91, 56);
+            this.picBoxProduct.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBoxProduct.TabIndex = 0;
+            this.picBoxProduct.TabStop = false;
+            this.picBoxProduct.Click += new System.EventHandler(this.picBoxProduct_Click);
             // 
             // picBoxProducts
             // 
@@ -96,47 +137,6 @@
             this.picBoxWorkers.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picBoxWorkers.TabIndex = 2;
             this.picBoxWorkers.TabStop = false;
-            // 
-            // picBoxLog
-            // 
-            this.picBoxLog.Image = global::BestBuy_Proyecto.Properties.Resources.aTable;
-            this.picBoxLog.Location = new System.Drawing.Point(24, 144);
-            this.picBoxLog.Name = "picBoxLog";
-            this.picBoxLog.Size = new System.Drawing.Size(91, 62);
-            this.picBoxLog.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picBoxLog.TabIndex = 1;
-            this.picBoxLog.TabStop = false;
-            this.picBoxLog.Click += new System.EventHandler(this.picBoxLog_Click);
-            // 
-            // picBoxProduct
-            // 
-            this.picBoxProduct.Image = global::BestBuy_Proyecto.Properties.Resources.aLaptop1;
-            this.picBoxProduct.InitialImage = null;
-            this.picBoxProduct.Location = new System.Drawing.Point(24, 22);
-            this.picBoxProduct.Name = "picBoxProduct";
-            this.picBoxProduct.Size = new System.Drawing.Size(91, 56);
-            this.picBoxProduct.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picBoxProduct.TabIndex = 0;
-            this.picBoxProduct.TabStop = false;
-            this.picBoxProduct.Click += new System.EventHandler(this.picBoxProduct_Click);
-            // 
-            // lblProducto
-            // 
-            this.lblProducto.AutoSize = true;
-            this.lblProducto.Location = new System.Drawing.Point(38, 85);
-            this.lblProducto.Name = "lblProducto";
-            this.lblProducto.Size = new System.Drawing.Size(65, 17);
-            this.lblProducto.TabIndex = 2;
-            this.lblProducto.Text = "Producto";
-            // 
-            // lblLog
-            // 
-            this.lblLog.AutoSize = true;
-            this.lblLog.Location = new System.Drawing.Point(38, 207);
-            this.lblLog.Name = "lblLog";
-            this.lblLog.Size = new System.Drawing.Size(64, 17);
-            this.lblLog.TabIndex = 3;
-            this.lblLog.Text = "Logistica";
             // 
             // lblWorkers
             // 
@@ -189,7 +189,7 @@
             // lblHMproducts
             // 
             this.lblHMproducts.AutoSize = true;
-            this.lblHMproducts.Location = new System.Drawing.Point(572, 181);
+            this.lblHMproducts.Location = new System.Drawing.Point(568, 181);
             this.lblHMproducts.Name = "lblHMproducts";
             this.lblHMproducts.Size = new System.Drawing.Size(16, 17);
             this.lblHMproducts.TabIndex = 8;
@@ -227,13 +227,14 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
             this.Load += new System.EventHandler(this.frmDashboard_Load);
+            this.VisibleChanged += new System.EventHandler(this.frmDashboard_VisibleChanged);
             this.pnlDashboard.ResumeLayout(false);
             this.pnlDashboard.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxLog)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxProducts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxUsers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxWorkers)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBoxLog)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBoxProduct)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
