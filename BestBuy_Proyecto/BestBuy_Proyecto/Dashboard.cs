@@ -10,21 +10,36 @@ using System.Windows.Forms;
 
 namespace BestBuy_Proyecto
 {
-    public partial class frm_Login : Form
+    public partial class frmDashboard : Form
     {
         public static Form dashboard;
 
-        public frm_Login()
+        public frmDashboard()
         {
             InitializeComponent();
             dashboard = this;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void frmDashboard_Load(object sender, EventArgs e)
         {
-            AddWorker addWorker = new AddWorker(dashboard);
+
+        }
+
+        private void lblAddWorker_Click(object sender, EventArgs e)
+        {
+            frmAddWorker addWorker = new frmAddWorker(dashboard);
             addWorker.Show();
             this.Hide();
+        }
+
+        private void picBoxProduct_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void picBoxLog_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
