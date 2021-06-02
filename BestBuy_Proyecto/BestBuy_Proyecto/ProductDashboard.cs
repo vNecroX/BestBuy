@@ -19,7 +19,6 @@ namespace BestBuy_Proyecto
         {
             public int id;
             public string result;
-            public bool productFlag;
         }
 
         private List<consultedData> inputDataList = new List<consultedData>();
@@ -49,32 +48,7 @@ namespace BestBuy_Proyecto
                     {
                         inputData.id = MySqlParameters.dataReader.GetInt32("id_producto");
                         inputData.result = MySqlParameters.dataReader.GetString("nombre_producto");
-                        inputData.productFlag = true;
                         cmbSearch.Items.Add(inputData.id);
-                        cmbSearch.Items.Add(inputData.result);
-                        inputDataList.Add(inputData);
-                        i++;
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("La consulta solicitada no contiene registros.", "Aviso.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-
-                MySqlParameters.dataReader.Close();
-
-                MySqlParameters.mySqlCommand = new MySqlCommand("SELECT id_categoria, nombre_categoria FROM categoria", MySqlParameters.mySqlConnection);
-                MySqlParameters.mySqlCommand.CommandTimeout = 60;
-
-                MySqlParameters.dataReader = MySqlParameters.mySqlCommand.ExecuteReader();
-
-                if (MySqlParameters.dataReader.HasRows)
-                {
-                    while (MySqlParameters.dataReader.Read())
-                    {
-                        inputData.id = MySqlParameters.dataReader.GetInt32("id_categoria");
-                        inputData.result = MySqlParameters.dataReader.GetString("nombre_categoria");
-                        inputData.productFlag = false;
                         cmbSearch.Items.Add(inputData.result);
                         inputDataList.Add(inputData);
                         i++;
@@ -103,7 +77,24 @@ namespace BestBuy_Proyecto
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("searching...");
+            consultedData resultFind = inputDataList.Find(
+                 delegate (consultedData current)
+                 {
+                     if (current.id.Equals(cmbSearch.SelectedItem.ToString()))
+                     {
+                         return current.id.ToString().Equals(cmbSearch.SelectedItem.ToString());
+                     }
+                     else if(cmbSearch.SelectedItem.ToString().Length == 1)
+                     {
+                         return current.id.ToString().Equals(cmbSearch.SelectedItem.ToString());
+                     }
+                     else
+                     {
+                         return current.result.Contains(cmbSearch.SelectedItem.ToString());
+                     }
+                 }
+            ) ;
+            MessageBox.Show(resultFind.id.ToString() + " - " + resultFind.result);
         }
 
         private void ProductDashboard_FormClosing(object sender, FormClosingEventArgs e)

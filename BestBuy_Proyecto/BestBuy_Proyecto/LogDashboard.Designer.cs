@@ -41,6 +41,7 @@
             this.btnBack.TabIndex = 14;
             this.btnBack.Text = "Regresar";
             this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // dgvLog
             // 
