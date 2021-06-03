@@ -118,14 +118,17 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="mac" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\mac.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="aTable" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\aTable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="aLaptop2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\aLaptop2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="superMarketCar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\superMarketCar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mac" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\mac.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="aLaptop1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\aLaptop1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,7 +139,19 @@
   <data name="aWorker" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\aWorker.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="superMarketCar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\superMarketCar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Adata" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Adata.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EstantePlegable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EstantePlegable.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HPEspectre" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\HPEspectre.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LGThin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\LGThin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MouseSteren" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\MouseSteren.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -12,16 +12,20 @@ namespace BestBuy_Proyecto
 {   
     public partial class frmSearch : Form
     {
-        public static Form form;
+        public static Form search;
+        
+
         public frmSearch()
         {
             InitializeComponent();
-            form=this;
+            search=this;
         }
+
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
-            frmSelectProduct SelectProduct = new frmSelectProduct(form);
+            frmSelectProduct SelectProduct = new frmSelectProduct(search, 1);
             SelectProduct.Show();
             this.Hide();
         }

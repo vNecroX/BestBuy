@@ -130,5 +130,20 @@
   <ItemGroup>
     <None Include="superMarketCar.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Adata.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="EstantePlegable.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="HPEspectre.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LGThin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MouseSteren.PNG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

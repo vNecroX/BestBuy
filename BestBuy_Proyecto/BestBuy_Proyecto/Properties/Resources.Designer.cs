@@ -63,6 +63,16 @@ namespace BestBuy_Proyecto.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Adata {
+            get {
+                object obj = ResourceManager.GetObject("Adata", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap aLaptop1 {
             get {
                 object obj = ResourceManager.GetObject("aLaptop1", resourceCulture);
@@ -113,9 +123,49 @@ namespace BestBuy_Proyecto.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap EstantePlegable {
+            get {
+                object obj = ResourceManager.GetObject("EstantePlegable", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HPEspectre {
+            get {
+                object obj = ResourceManager.GetObject("HPEspectre", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LGThin {
+            get {
+                object obj = ResourceManager.GetObject("LGThin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mac {
             get {
                 object obj = ResourceManager.GetObject("mac", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MouseSteren {
+            get {
+                object obj = ResourceManager.GetObject("MouseSteren", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
