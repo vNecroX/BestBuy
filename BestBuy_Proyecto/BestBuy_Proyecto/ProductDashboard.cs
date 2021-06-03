@@ -60,7 +60,7 @@ namespace BestBuy_Proyecto
                 }
 
                 MySqlParameters.dataReader.Close();
-
+                //select detcompra.id_producto, sum(detcompra.cantidad_producto) as total from detcompra inner join compra where compra.fecha_compra>=(DATE_SUB(now(),INTERVAL 30 DAY)) AND compra.id_compra = detcompra.id_compra group by detcompra.id_producto order by total desc;
                 MySqlParameters.mySqlConnection.Close();
             }
             catch (MySqlException ex)
