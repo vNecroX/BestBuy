@@ -44,7 +44,9 @@ namespace BestBuy_Proyecto
 
         private void picBoxProduct_Click(object sender, EventArgs e)
         {
-
+            ProductDashboard productDashboard = new ProductDashboard();
+            productDashboard.Show();
+            this.Hide();
         }
 
         private void picBoxLog_Click(object sender, EventArgs e)
