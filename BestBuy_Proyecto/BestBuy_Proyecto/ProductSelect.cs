@@ -18,5 +18,10 @@ namespace BestBuy_Proyecto
             InitializeComponent();
             retSearch = form;
         }
+
+        private void frmSelectProduct_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

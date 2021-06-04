@@ -25,8 +25,7 @@ namespace BestBuy_Proyecto
             dashboard = this;
         }
 
-        private void frmDashboard_Load(object sender, EventArgs e)
-        {
+        .
             loadDashboard();
         }
 

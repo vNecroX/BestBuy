@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace BestBuy_Proyecto
 {
@@ -16,8 +17,14 @@ namespace BestBuy_Proyecto
         {
             InitializeComponent();
         }
+        string conectionstring = " ";
 
         private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
