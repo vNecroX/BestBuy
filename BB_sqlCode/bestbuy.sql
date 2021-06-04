@@ -101,4 +101,7 @@ insert into detcompra (id_producto, id_compra, cantidad_producto) values(3,1,2);
 insert into detcompra (id_producto, id_compra, cantidad_producto) values(3,1,2);
 insert into compra (id_cliente, fecha_compra) values(1,now());
 insert into detcompra (id_producto, id_compra, cantidad_producto) values(1,2,3);
-    
+insert into compra (id_cliente, fecha_compra) values(1,now());
+insert into detcompra (id_producto, id_compra, cantidad_producto) values(4,3,10);
+insert into compra (id_cliente, fecha_compra) values(1,now());
+insert into detcompra (id_producto, id_compra, cantidad_producto) values(2,3,1);
