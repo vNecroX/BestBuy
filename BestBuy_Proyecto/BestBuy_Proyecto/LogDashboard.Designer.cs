@@ -61,6 +61,7 @@
             this.Controls.Add(this.btnBack);
             this.Name = "LogDashboard";
             this.Text = "LogDashboard";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LogDashboard_FormClosing);
             this.Load += new System.EventHandler(this.LogDashboard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLog)).EndInit();
             this.ResumeLayout(false);
