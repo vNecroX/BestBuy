@@ -67,23 +67,25 @@ namespace BestBuy_Proyecto
         {
             try
             {
-                MySqlParameters.startMySqlConnection();
-                string currentID = "", currentToolTip = "";
-                DataGridViewCell cell;
-                currentID = dgvLog.Rows[e.RowIndex].Cells["ID"].Value.ToString();
-                MySqlParameters.mySqlCommand = new MySqlCommand("SELECT producto.nombre_producto AS 'Nombre Producto', SUM(detcompra.cantidad_producto) AS 'Cantidad', (detcompra.cantidad_producto * producto.precio_producto) AS 'SubTotal' FROM compra INNER JOIN detcompra INNER JOIN producto WHERE compra.id_compra = " + currentID + " AND producto.id_producto = detcompra.id_producto AND compra.id_compra = detcompra.id_compra GROUP BY detcompra.id_producto", MySqlParameters.mySqlConnection);
-                MySqlParameters.mySqlCommand.CommandTimeout = 60;
-                if (MySqlParameters.dataReader.HasRows)
+                if(e.RowIndex < (dgvLog.RowCount-1) && e.RowIndex >= 0)
                 {
-                    while (MySqlParameters.dataReader.Read())
+                    MySqlParameters.startMySqlConnection();
+                    string currentID = "", currentToolTip = "";
+                    currentID = dgvLog.Rows[e.RowIndex].Cells["ID"].Value.ToString();
+                    MySqlParameters.mySqlCommand = new MySqlCommand("SELECT producto.nombre_producto AS 'Nombre Producto', SUM(detcompra.cantidad_producto) AS 'Cantidad', (detcompra.cantidad_producto * producto.precio_producto) AS 'SubTotal' FROM compra INNER JOIN detcompra INNER JOIN producto WHERE compra.id_compra = " + currentID + " AND producto.id_producto = detcompra.id_producto AND compra.id_compra = detcompra.id_compra GROUP BY detcompra.id_producto", MySqlParameters.mySqlConnection);
+                    MySqlParameters.mySqlCommand.CommandTimeout = 60;
+                    MySqlParameters.dataReader = MySqlParameters.mySqlCommand.ExecuteReader();
+                    if (MySqlParameters.dataReader.HasRows)
                     {
-                        currentToolTip += "Nombre Producto: " + MySqlParameters.dataReader.GetString("Nombre Producto") + " Cantidad: " + MySqlParameters.dataReader.GetInt32("Cantidad").ToString() + " SubTotal: " + MySqlParameters.dataReader.GetFloat("SubTotal").ToString() + "\n";
+                        while (MySqlParameters.dataReader.Read())
+                        {
+                            currentToolTip += "Nombre Producto: " + MySqlParameters.dataReader.GetString("Nombre Producto") + " Cantidad: " + MySqlParameters.dataReader.GetInt32("Cantidad").ToString() + " SubTotal: " + MySqlParameters.dataReader.GetFloat("SubTotal").ToString() + "\n";
+                        }
+                        e.ToolTipText = currentToolTip;
                     }
-                    cell = dgvLog.Rows[e.RowIndex].Cells["Total Compra"];
-                    cell.ToolTipText = currentToolTip;
+                    MySqlParameters.dataReader.Close();
+                    MySqlParameters.mySqlConnection.Close();
                 }
-                MySqlParameters.dataReader.Close();
-                MySqlParameters.mySqlConnection.Close();
             }
             catch (MySqlException ex)
             {
