@@ -36,7 +36,11 @@ namespace BestBuy_Proyecto
                     while (MySqlParameters.dataReader.Read())
                     {
                         MessageBox.Show("Haz ingresado");
+<<<<<<< Updated upstream
                       frmCarrito frmCarrito = new frmCarrito();
+=======
+                       frmCarrito frmCarrito = new frmCarrito();
+>>>>>>> Stashed changes
                         frmCarrito.Show();
                         this.Hide();
 
