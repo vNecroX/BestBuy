@@ -52,7 +52,7 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(678, 415);
+            this.btnBack.Location = new System.Drawing.Point(838, 473);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(75, 23);
             this.btnBack.TabIndex = 13;
@@ -66,13 +66,13 @@
             this.chartEarning.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chartEarning.Legends.Add(legend1);
-            this.chartEarning.Location = new System.Drawing.Point(521, 227);
+            this.chartEarning.Location = new System.Drawing.Point(510, 210);
             this.chartEarning.Name = "chartEarning";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chartEarning.Series.Add(series1);
-            this.chartEarning.Size = new System.Drawing.Size(220, 182);
+            this.chartEarning.Size = new System.Drawing.Size(393, 257);
             this.chartEarning.TabIndex = 12;
             this.chartEarning.Text = "chart3";
             // 
@@ -82,13 +82,13 @@
             this.chartTop3.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.chartTop3.Legends.Add(legend2);
-            this.chartTop3.Location = new System.Drawing.Point(263, 227);
+            this.chartTop3.Location = new System.Drawing.Point(238, 244);
             this.chartTop3.Name = "chartTop3";
             series2.ChartArea = "ChartArea1";
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.chartTop3.Series.Add(series2);
-            this.chartTop3.Size = new System.Drawing.Size(220, 182);
+            this.chartTop3.Size = new System.Drawing.Size(266, 208);
             this.chartTop3.TabIndex = 11;
             this.chartTop3.Text = "Top 3 Productos vendidos";
             // 
@@ -98,7 +98,7 @@
             this.chartStock.ChartAreas.Add(chartArea3);
             legend3.Name = "Legend1";
             this.chartStock.Legends.Add(legend3);
-            this.chartStock.Location = new System.Drawing.Point(11, 227);
+            this.chartStock.Location = new System.Drawing.Point(12, 259);
             this.chartStock.Name = "chartStock";
             series3.ChartArea = "ChartArea1";
             series3.Legend = "Legend1";
@@ -111,7 +111,7 @@
             // picProduct
             // 
             this.picProduct.Image = global::BestBuy_Proyecto.Properties.Resources.aLaptop1;
-            this.picProduct.Location = new System.Drawing.Point(287, 61);
+            this.picProduct.Location = new System.Drawing.Point(381, 67);
             this.picProduct.Name = "picProduct";
             this.picProduct.Size = new System.Drawing.Size(174, 124);
             this.picProduct.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -120,7 +120,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(182, 12);
+            this.btnSearch.Location = new System.Drawing.Point(276, 18);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 8;
@@ -133,7 +133,7 @@
             this.cmbSearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbSearch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbSearch.FormattingEnabled = true;
-            this.cmbSearch.Location = new System.Drawing.Point(263, 12);
+            this.cmbSearch.Location = new System.Drawing.Point(357, 18);
             this.cmbSearch.Name = "cmbSearch";
             this.cmbSearch.Size = new System.Drawing.Size(281, 21);
             this.cmbSearch.TabIndex = 7;
@@ -143,7 +143,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(754, 439);
+            this.ClientSize = new System.Drawing.Size(915, 498);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.chartEarning);
             this.Controls.Add(this.chartTop3);

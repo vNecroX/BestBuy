@@ -91,6 +91,7 @@ namespace BestBuy_Proyecto
             this.lblCrear.Size = new System.Drawing.Size(69, 13);
             this.lblCrear.TabIndex = 5;
             this.lblCrear.Text = "Crear Cuenta";
+            this.lblCrear.Click += new System.EventHandler(this.lblCrear_Click);
             // 
             // label1
             // 
