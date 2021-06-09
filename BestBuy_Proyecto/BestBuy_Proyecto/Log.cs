@@ -17,7 +17,46 @@ namespace BestBuy_Proyecto
         {
             InitializeComponent();
         }
-        string conectionstring = " ";
+ 
+
+        public void Log()
+        {
+
+
+            try
+            {
+                MySqlParameters.startMySqlConnection();
+                MySqlParameters.mySqlCommand = new MySqlCommand("SELECT * FROM empleado WHERE nombre_empleado= '" + textBox1.Text + "'AND pssw_empleado= '" + textBox2.Text + "'", MySqlParameters.mySqlConnection);
+                MySqlParameters.mySqlCommand.CommandTimeout = 60;
+
+                MySqlParameters.dataReader = MySqlParameters.mySqlCommand.ExecuteReader();
+
+                if (MySqlParameters.dataReader.HasRows)
+                {
+                    while (MySqlParameters.dataReader.Read())
+                    {
+                        MessageBox.Show("Haz ingresado");
+                      frmRegistro frmRegistro = new frmRegistro();
+                        frmRegistro.Show();
+                        this.Hide();
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("A ocurrido un error intentelo mas tarde");
+                }
+
+                MySqlParameters.dataReader.Close();
+
+                MySqlParameters.mySqlConnection.Close();
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
+        }
+        
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
@@ -27,6 +66,11 @@ namespace BestBuy_Proyecto
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnIngresar_Click(object sender, EventArgs e)
+        {
+            Log();
         }
     }
 }

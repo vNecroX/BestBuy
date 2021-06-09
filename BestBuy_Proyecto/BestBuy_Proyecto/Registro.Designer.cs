@@ -1,7 +1,7 @@
 ﻿
 namespace BestBuy_Proyecto
 {
-    partial class Registro
+    partial class frmRegistro
     {
         /// <summary>
         /// Required designer variable.
@@ -67,6 +67,7 @@ namespace BestBuy_Proyecto
             this.button1.TabIndex = 3;
             this.button1.Text = "Registrarse ";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -95,10 +96,11 @@ namespace BestBuy_Proyecto
             this.label3.TabIndex = 6;
             this.label3.Text = "Contraseña";
             // 
-            // Registro
+            // frmRegistro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(336, 397);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -107,7 +109,7 @@ namespace BestBuy_Proyecto
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.Name = "Registro";
+            this.Name = "frmRegistro";
             this.Text = "Registro";
             this.ResumeLayout(false);
             this.PerformLayout();
