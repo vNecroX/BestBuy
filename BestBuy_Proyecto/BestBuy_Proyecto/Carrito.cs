@@ -16,5 +16,20 @@ namespace BestBuy_Proyecto
         {
             InitializeComponent();
         }
+        string selectCategorie;
+        public void frmBusqueda()
+        {
+            try
+            {
+                MySqlParameters.startMySqlConnection();
+                selectCategorie = "SELECT * FROM categoria WHERE nombre_categoria = '"+comboBox1+"'";
+
+            }
+            catch
+            {
+                
+            }
+        }
+       
     }
 }

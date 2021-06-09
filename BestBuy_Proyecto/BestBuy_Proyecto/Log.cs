@@ -26,7 +26,7 @@ namespace BestBuy_Proyecto
             try
             {
                 MySqlParameters.startMySqlConnection();
-                MySqlParameters.mySqlCommand = new MySqlCommand("SELECT * FROM empleado WHERE nombre_empleado= '" + textBox1.Text + "'AND pssw_empleado= '" + textBox2.Text + "'", MySqlParameters.mySqlConnection);
+                MySqlParameters.mySqlCommand = new MySqlCommand("SELECT * FROM cliente WHERE nombre_usuario= '" + textBox1.Text + "'AND pssw_usuario= '" + textBox2.Text + "'", MySqlParameters.mySqlConnection);
                 MySqlParameters.mySqlCommand.CommandTimeout = 60;
 
                 MySqlParameters.dataReader = MySqlParameters.mySqlCommand.ExecuteReader();
@@ -36,8 +36,8 @@ namespace BestBuy_Proyecto
                     while (MySqlParameters.dataReader.Read())
                     {
                         MessageBox.Show("Haz ingresado");
-                      frmRegistro frmRegistro = new frmRegistro();
-                        frmRegistro.Show();
+                      frmCarrito frmCarrito = new frmCarrito();
+                        frmCarrito.Show();
                         this.Hide();
 
                     }
@@ -71,6 +71,13 @@ namespace BestBuy_Proyecto
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             Log();
+        }
+
+        private void lblCrear_Click(object sender, EventArgs e)
+        {
+            frmRegistro frmRegistro = new frmRegistro();
+            frmRegistro.Show();
+            this.Hide();
         }
     }
 }
