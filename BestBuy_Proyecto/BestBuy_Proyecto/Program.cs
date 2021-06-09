@@ -16,7 +16,7 @@ namespace BestBuy_Proyecto
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmRegistro());
+            Application.Run(new frmDashboard());
         }
     }
 }
