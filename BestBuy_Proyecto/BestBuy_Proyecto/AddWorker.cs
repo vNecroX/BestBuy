@@ -94,9 +94,9 @@ namespace BestBuy_Proyecto
                 }
                 
                 MySqlParameters.mySqlConnection.Close();
-
+                frmRegistro frmRegistro = new frmRegistro();
                 retDashboard.Show();
-                this.Close();
+                this.Hide();
             }
             catch(MySqlException ex)
             {

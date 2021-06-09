@@ -10,18 +10,11 @@ using System.Windows.Forms;
 
 namespace BestBuy_Proyecto
 {
-    public partial class frmSelectProduct : Form
+    public partial class frmCarrito : Form
     {
-        private Form retSearch;
-        public frmSelectProduct(Form form)
+        public frmCarrito()
         {
             InitializeComponent();
-            retSearch = form;
-        }
-
-        private void frmSelectProduct_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
