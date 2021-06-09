@@ -156,7 +156,42 @@ namespace BestBuy_Proyecto
 
                     //picProduct.ImageLocation = "https://www.sublimesolutions.com/imgs/articulos/_original_10144.jpg";
                     string temp = Application.StartupPath.Remove(Application.StartupPath.Length - 9);
-                    picProduct.ImageLocation = temp + "aLaptop2.png";
+                    picProduct.ImageLocation = temp + "imagenes/" + resultFind.nombre + ".jpg";
+
+                    MySqlParameters.dataReader.Close();
+
+                    MySqlParameters.mySqlCommand = new MySqlCommand("SELECT (producto.precio_producto * detcompra.cantidad_producto) AS 'Total de Ventas', DATE_FORMAT(compra.fecha_compra, '%Y-%m-%d') AS 'Fecha de Compra' FROM producto INNER JOIN compra INNER JOIN detcompra WHERE producto.id_producto = detcompra.id_producto AND compra.id_compra = detcompra.id_compra AND detcompra.id_producto = " + resultFind.id.ToString(), MySqlParameters.mySqlConnection);
+                    MySqlParameters.mySqlCommand.CommandTimeout = 60;
+
+                    MySqlParameters.dataReader = MySqlParameters.mySqlCommand.ExecuteReader();
+
+                    chartEarning.Visible = true;
+                    chartEarning.Series.Clear();
+
+                    Series serie2 = chartEarning.Series.Add(resultFind.nombre);
+                    List<string> fechas = new List<string>();
+                    List<double> precios = new List<double>();
+                    if (MySqlParameters.dataReader.HasRows)
+                    {
+                        while (MySqlParameters.dataReader.Read())
+                        {
+                            fechas.Add(MySqlParameters.dataReader.GetString("Fecha de Compra"));
+                            precios.Add(MySqlParameters.dataReader.GetDouble("Total de Ventas"));
+                        }
+                    }
+                    else
+                    {
+                        fechas.Add(DateTime.Today.ToString("yyyy-MM-dd"));
+                        precios.Add(0);
+                    }
+
+                    serie2.ChartType = SeriesChartType.Line;
+                    serie2.MarkerStyle = MarkerStyle.Circle;
+                    serie2.Points.DataBindXY(fechas, precios);
+                    for (int i = 0; i < serie2.Points.Count; i++)
+                    {
+                        serie2.Points[i].Label = ((float)serie2.Points[i].YValues.ElementAt(0)).ToString();
+                    }
 
                     MySqlParameters.dataReader.Close();
 
