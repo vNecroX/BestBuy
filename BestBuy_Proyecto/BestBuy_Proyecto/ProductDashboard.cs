@@ -45,7 +45,7 @@ namespace BestBuy_Proyecto
             chartStock.Palette = ChartColorPalette.Pastel;
             chartTop3.Titles.Add("Top 3");
             chartStock.Titles.Add("Stock");
-            chartEarning.Titles.Add("Ganancias");
+            chartEarning.Titles.Add("Ganancias ultima semana");
             chartStock.Visible = false;
             chartEarning.Visible = false;
             formHome = frmDashboard.ActiveForm;
@@ -160,7 +160,7 @@ namespace BestBuy_Proyecto
 
                     MySqlParameters.dataReader.Close();
 
-                    MySqlParameters.mySqlCommand = new MySqlCommand("SELECT (producto.precio_producto * detcompra.cantidad_producto) AS 'Total de Ventas', DATE_FORMAT(compra.fecha_compra, '%Y-%m-%d') AS 'Fecha de Compra' FROM producto INNER JOIN compra INNER JOIN detcompra WHERE producto.id_producto = detcompra.id_producto AND compra.id_compra = detcompra.id_compra AND detcompra.id_producto = " + resultFind.id.ToString(), MySqlParameters.mySqlConnection);
+                    MySqlParameters.mySqlCommand = new MySqlCommand("SELECT SUM(producto.precio_producto * detcompra.cantidad_producto) AS 'Total de Ventas', DATE_FORMAT(compra.fecha_compra, '%Y-%m-%d') AS 'Fecha de Compra' FROM compra INNER JOIN producto INNER JOIN detcompra WHERE producto.id_producto = detcompra.id_producto AND compra.id_compra = detcompra.id_compra AND compra.fecha_compra > (now()-INTERVAL 1 WEEK) AND detcompra.id_producto = " + resultFind.id.ToString() + " GROUP BY DAY(compra.fecha_compra) ORDER BY compra.fecha_compra", MySqlParameters.mySqlConnection);
                     MySqlParameters.mySqlCommand.CommandTimeout = 60;
 
                     MySqlParameters.dataReader = MySqlParameters.mySqlCommand.ExecuteReader();

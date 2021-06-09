@@ -27,7 +27,7 @@ namespace BestBuy_Proyecto
             {
                 MySqlParameters.startMySqlConnection();
 
-                MySqlParameters.mySqlCommand = new MySqlCommand("SELECT cliente.nombre_cliente AS 'Nombre Cliente', compra.fecha_compra AS 'Fecha Compra', sum(producto.precio_producto * detcompra.cantidad_producto) AS 'Total Compra' FROM compra INNER JOIN cliente INNER JOIN producto INNER JOIN detcompra WHERE cliente.id_cliente = compra.id_cliente AND compra.id_compra = detcompra.id_compra AND producto.id_producto = detcompra.id_producto GROUP BY compra.id_compra ORDER BY compra.fecha_compra ASC", MySqlParameters.mySqlConnection);
+                MySqlParameters.mySqlCommand = new MySqlCommand("SELECT compra.id_compra AS 'ID', cliente.nombre_cliente AS 'Nombre Cliente', compra.fecha_compra AS 'Fecha Compra', sum(producto.precio_producto * detcompra.cantidad_producto) AS 'Total Compra' FROM compra INNER JOIN cliente INNER JOIN producto INNER JOIN detcompra WHERE cliente.id_cliente = compra.id_cliente AND compra.id_compra = detcompra.id_compra AND producto.id_producto = detcompra.id_producto GROUP BY compra.id_compra ORDER BY compra.fecha_compra DESC", MySqlParameters.mySqlConnection);
                 MySqlParameters.mySqlCommand.CommandTimeout = 60;
 
                 MySqlDataAdapter sda = new MySqlDataAdapter(MySqlParameters.mySqlCommand);
@@ -37,8 +37,9 @@ namespace BestBuy_Proyecto
                 BindingSource bSource = new BindingSource();
                 bSource.DataSource = table;
 
-
                 dgvLog.DataSource = bSource;
+
+                dgvLog.ShowCellToolTips = true;
 
                 MySqlParameters.dataReader.Close();
 
@@ -60,6 +61,34 @@ namespace BestBuy_Proyecto
         private void LogDashboard_FormClosing(object sender, FormClosingEventArgs e)
         {
             formHome.Show();
+        }
+
+        private void dgvLog_CellToolTipTextNeeded(object sender, DataGridViewCellToolTipTextNeededEventArgs e)
+        {
+            try
+            {
+                MySqlParameters.startMySqlConnection();
+                string currentID = "", currentToolTip = "";
+                DataGridViewCell cell;
+                currentID = dgvLog.Rows[e.RowIndex].Cells["ID"].Value.ToString();
+                MySqlParameters.mySqlCommand = new MySqlCommand("SELECT producto.nombre_producto AS 'Nombre Producto', SUM(detcompra.cantidad_producto) AS 'Cantidad', (detcompra.cantidad_producto * producto.precio_producto) AS 'SubTotal' FROM compra INNER JOIN detcompra INNER JOIN producto WHERE compra.id_compra = " + currentID + " AND producto.id_producto = detcompra.id_producto AND compra.id_compra = detcompra.id_compra GROUP BY detcompra.id_producto", MySqlParameters.mySqlConnection);
+                MySqlParameters.mySqlCommand.CommandTimeout = 60;
+                if (MySqlParameters.dataReader.HasRows)
+                {
+                    while (MySqlParameters.dataReader.Read())
+                    {
+                        currentToolTip += "Nombre Producto: " + MySqlParameters.dataReader.GetString("Nombre Producto") + " Cantidad: " + MySqlParameters.dataReader.GetInt32("Cantidad").ToString() + " SubTotal: " + MySqlParameters.dataReader.GetFloat("SubTotal").ToString() + "\n";
+                    }
+                    cell = dgvLog.Rows[e.RowIndex].Cells["Total Compra"];
+                    cell.ToolTipText = currentToolTip;
+                }
+                MySqlParameters.dataReader.Close();
+                MySqlParameters.mySqlConnection.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Conexion fallida, intentelo de nuevo: " + ex.Message, "Aviso.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
     }
 }

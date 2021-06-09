@@ -50,6 +50,7 @@
             this.dgvLog.Name = "dgvLog";
             this.dgvLog.Size = new System.Drawing.Size(730, 396);
             this.dgvLog.TabIndex = 15;
+            this.dgvLog.CellToolTipTextNeeded += new System.Windows.Forms.DataGridViewCellToolTipTextNeededEventHandler(this.dgvLog_CellToolTipTextNeeded);
             // 
             // LogDashboard
             // 
