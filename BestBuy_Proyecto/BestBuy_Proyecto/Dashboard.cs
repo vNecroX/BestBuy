@@ -25,8 +25,7 @@ namespace BestBuy_Proyecto
             dashboard = this;
         }
 
-        private void frmDashboard_Load(object sender, EventArgs e)
-        {
+        private void frmDashboard_Load(object sender, EventArgs e) { 
             loadDashboard();
         }
 
@@ -51,7 +50,9 @@ namespace BestBuy_Proyecto
 
         private void picBoxLog_Click(object sender, EventArgs e)
         {
-
+            LogDashboard logDashboard = new LogDashboard();
+            logDashboard.Show();
+            this.Hide();
         }
 
         public void loadDashboard()

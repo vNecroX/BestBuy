@@ -155,7 +155,10 @@ namespace BestBuy_Proyecto
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vista del producto";
             this.Load += new System.EventHandler(this.frmSelectProduct_Load);
+<<<<<<< HEAD
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownProducts)).EndInit();
+=======
+>>>>>>> master
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMarketCar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProduct)).EndInit();
             this.ResumeLayout(false);

@@ -13,6 +13,7 @@ namespace BestBuy_Proyecto
 {
     public partial class frmSelectProduct : Form
     {
+<<<<<<< HEAD
         public Form retSearch;
         
         int productID;
@@ -35,10 +36,20 @@ namespace BestBuy_Proyecto
         {
             retSearch.Show();
             this.Hide();
+=======
+        string productor2;
+        private Form retSearch;
+        public frmSelectProduct(Form form, string _Productor2)
+        {
+            InitializeComponent();
+            retSearch = form;
+            productor2 = _Productor2;
+>>>>>>> master
         }
 
         private void frmSelectProduct_Load(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             
             try
             {
@@ -108,6 +119,8 @@ namespace BestBuy_Proyecto
 
             lblOpTotal.Text = TotalPrice.ToString();
 
+=======
+>>>>>>> master
 
         }
     }
