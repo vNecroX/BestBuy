@@ -44,7 +44,6 @@ namespace BestBuy_Proyecto
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(203, 20);
             this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "....";
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox2
@@ -123,13 +122,12 @@ namespace BestBuy_Proyecto
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblContraseña;
-        private System.Windows.Forms.Label lblCrear;
         private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.Label lblCrear;
     }
 }

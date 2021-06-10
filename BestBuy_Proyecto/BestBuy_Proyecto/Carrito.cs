@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace BestBuy_Proyecto
 {
@@ -15,21 +16,45 @@ namespace BestBuy_Proyecto
         public frmCarrito()
         {
             InitializeComponent();
+            frmLog Log = new frmLog();
+            label1.Text = "Bienvenido,"+Log.textBox1.Text;
+            label2.Text = "Cerrar sesion";
         }
-        string selectCategorie;
-        public void frmBusqueda()
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
+            if (comboBox1.Text == "Equipo")
             {
                 MySqlParameters.startMySqlConnection();
-                selectCategorie = "SELECT * FROM categoria WHERE nombre_categoria = '"+comboBox1+"'";
-
+                string Equipo = "SELECT * FROM producto WHERE id_categoria= '1'";
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(Equipo, MySqlParameters.mySqlConnection);
+                DataTable dt = new DataTable();
+                adaptador.Fill(dt);
+                dataGridView1.DataSource = dt;
             }
-            catch
+            else
             {
-                
+                MySqlParameters.startMySqlConnection();
+                string Accesorio = "SELECT * FROM producto WHERE id_categoria= '2'";
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(Accesorio, MySqlParameters.mySqlConnection);
+                DataTable dt = new DataTable();
+                adaptador.Fill(dt);
+                dataGridView1.DataSource = dt;
             }
         }
+
+        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            frmLog Lo = new frmLog();
+            Lo.Show();
+            this.Hide();
+        }
+    }
        
     }
-}
+
