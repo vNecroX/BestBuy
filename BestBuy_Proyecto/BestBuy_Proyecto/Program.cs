@@ -16,19 +16,8 @@ namespace BestBuy_Proyecto
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-<<<<<<< HEAD
-            Application.Run(new frmLog());
-=======
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            Application.Run(new frmDashboard());
-=======
-            Application.Run(new frmLog());
->>>>>>> Stashed changes
-=======
-            Application.Run(new frmLog());
->>>>>>> Stashed changes
->>>>>>> devAaron
+
+            Application.Run(new frmCarrito());
         }
     }
 }

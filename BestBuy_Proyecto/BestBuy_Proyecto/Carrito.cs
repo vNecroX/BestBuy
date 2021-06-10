@@ -13,12 +13,15 @@ namespace BestBuy_Proyecto
 {
     public partial class frmCarrito : Form
     {
+        public static string Productor;
+        Form Carrito;
         public frmCarrito()
         {
             InitializeComponent();
             frmLog Log = new frmLog();
             label1.Text = "Bienvenido,"+Log.textBox1.Text;
             label2.Text = "Cerrar sesion";
+            Carrito = this;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -45,7 +48,10 @@ namespace BestBuy_Proyecto
 
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+            Productor = dataGridView1.SelectedCells[0].Value.ToString();
+            frmSelectProduct frmSelectProduct = new frmSelectProduct(Carrito, Productor);
+            frmSelectProduct.Show();
+            this.Hide();
         }
 
         private void label2_Click(object sender, EventArgs e)
