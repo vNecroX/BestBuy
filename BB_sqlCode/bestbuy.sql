@@ -16,8 +16,9 @@ CREATE TABLE compra(
 );
 
 CREATE TABLE detcompra(
-    id_compra int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id_detcompra int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     id_producto int,
+    id_compra int,
     cantidad_producto int
 );
 
@@ -93,4 +94,14 @@ INSERT INTO cliente
     (nombre_cliente, nombre_usuario, pssw_usuario)
 VALUES
     ('Daniela','danis8', 'amiz88');
-    
+
+insert into compra (id_cliente, fecha_compra) values(1,now());
+insert into detcompra (id_producto, id_compra, cantidad_producto) values(1,1,2);
+insert into detcompra (id_producto, id_compra, cantidad_producto) values(3,1,2);
+insert into detcompra (id_producto, id_compra, cantidad_producto) values(3,1,2);
+insert into compra (id_cliente, fecha_compra) values(1,now());
+insert into detcompra (id_producto, id_compra, cantidad_producto) values(1,2,3);
+insert into compra (id_cliente, fecha_compra) values(1,now());
+insert into detcompra (id_producto, id_compra, cantidad_producto) values(4,3,10);
+insert into compra (id_cliente, fecha_compra) values(1,now());
+insert into detcompra (id_producto, id_compra, cantidad_producto) values(2,3,1);
