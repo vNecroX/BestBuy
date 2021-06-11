@@ -60,9 +60,8 @@ void loop() {
     
     if(outgoingChar == 'A'){          //storer requests for all products with no stock, through their ID's. . .   
       Serial.print(outgoingChar);
-      lcd.print(outgoingText);
       delay(1000);
-      outgoingChar = NO_KEY; 
+      outgoingChar = 'A';
       flagIncomingData = true;
     }
     else if(outgoingChar == 'B'|| outgoingChar == 'C'){     
@@ -86,38 +85,40 @@ void loop() {
       lcd.print(outgoingText);
       outgoingChar = auxOutgoingChar;
       flagIncomingData = true;
+    }else{
+      outgoingChar = NO_KEY;
     }
     delay(500);
   }
   if(flagIncomingData){
+    
+    lcd.clear();
     while(Serial.available() > 0){
-      lcd.clear();
-
       incomingChar = Serial.read();
       incomingText += (String)incomingChar;
-
-      if(outgoingChar == 'A'){
-        lcd.print("P. sin stock son");
-        lcd.setCursor(0,1);
-        lcd.print(incomingText);
-        lcd.print(" ");
-      }
-      else if(outgoingChar == 'B'){
-        lcd.print("P. elegido tiene");
-        lcd.setCursor(0,1);
-        lcd.print("stock de: ");
-        lcd.print(incomingText);
-      }
-      else if(incomingChar == 'C')
-        lcd.print("Stock P. llenado");
-
-      outgoingChar = NO_KEY;
-      incomingChar = NO_KEY;
     }
-    flagIncomingData = false;
-    incomingText = "";
-    delay(2000);
+
+    if(outgoingChar == 'A'){
+      lcd.print("P. sin stock son");
+      lcd.setCursor(0,1);
+      lcd.print(incomingText);
+      lcd.print(" ");
+    }
+    else if(outgoingChar == 'B'){
+      lcd.print("P. elegido tiene");
+      lcd.setCursor(0,1);
+      lcd.print("stock de: ");
+      lcd.print(incomingText);
+    }
+    else if(incomingChar == 'C')
+      lcd.print("Stock P. llenado");
+
+    outgoingChar = NO_KEY;
+    incomingChar = NO_KEY;
   }
+  flagIncomingData = false;
+  incomingText = "";
+  delay(2000);
 }
 
 void menu(){
