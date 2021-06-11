@@ -60,6 +60,7 @@ namespace BestBuy_Proyecto
             try
             {
                 MySqlParameters.startMySqlConnection();
+                MessageBox.Show(arduinoRequest);
 
                 if (arduinoRequest == "A")              //storer requests for all products with no stock, through their ID's. . .
                 {
@@ -80,7 +81,7 @@ namespace BestBuy_Proyecto
                         MessageBox.Show("La consulta solicitada no contiene registros.", "Aviso.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
-                else if(Char.ToString(arduinoRequest[0]) == "B")          //storer requests for a single product, their stock value. . .
+                else if(Char.ToString(arduinoRequest[0]) == "B" && arduinoRequest.Length ==2)          //storer requests for a single product, their stock value. . .
                 {
                     idSingleProduct = Char.ToString(arduinoRequest[1]);
                     selectStockSingleProductQuery += idSingleProduct;
@@ -102,7 +103,7 @@ namespace BestBuy_Proyecto
                         MessageBox.Show("La consulta solicitada no contiene registros.", "Aviso.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
-                else if(Char.ToString(arduinoRequest[0]) == "C")          //storer fills stock for a single product. . .
+                else if(Char.ToString(arduinoRequest[0]) == "C" && arduinoRequest.Length == 2)          //storer fills stock for a single product. . .
                 {
                     idSingleProduct = Char.ToString(arduinoRequest[1]);
                     updateStockSingleProductQuery += idSingleProduct;
@@ -114,9 +115,8 @@ namespace BestBuy_Proyecto
 
                     arduinoSerialPort.Write("C");
                 }
-                
-                if(!MySqlParameters.dataReader.IsClosed)
-                    MySqlParameters.dataReader.Close();
+
+                MySqlParameters.dataReader.Close();
 
                 MySqlParameters.mySqlConnection.Close();
 
