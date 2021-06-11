@@ -61,9 +61,10 @@ namespace BestBuy_Proyecto
             {
                 MySqlParameters.startMySqlConnection();
                 MessageBox.Show(arduinoRequest);
-
+                int temp;
                 if (arduinoRequest == "A")              //storer requests for all products with no stock, through their ID's. . .
                 {
+                    productsWithNoStock = "";
                     MySqlParameters.mySqlCommand = new MySqlCommand(selectProductsWithNoStockQuery, MySqlParameters.mySqlConnection);
                     MySqlParameters.mySqlCommand.CommandTimeout = 60;
 
@@ -72,7 +73,7 @@ namespace BestBuy_Proyecto
                     if (MySqlParameters.dataReader.HasRows)
                     {
                         while (MySqlParameters.dataReader.Read())
-                            productsWithNoStock += MySqlParameters.dataReader.GetString(0);
+                            productsWithNoStock += MySqlParameters.dataReader.GetString(0)+" ";
 
                         arduinoSerialPort.Write(productsWithNoStock);
                     }
@@ -81,26 +82,28 @@ namespace BestBuy_Proyecto
                         MessageBox.Show("La consulta solicitada no contiene registros.", "Aviso.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
-                else if(Char.ToString(arduinoRequest[0]) == "B" && arduinoRequest.Length ==2)          //storer requests for a single product, their stock value. . .
+                else if (Char.ToString(arduinoRequest[0]) == "B" && arduinoRequest.Length == 2)          //storer requests for a single product, their stock value. . .
                 {
-                    idSingleProduct = Char.ToString(arduinoRequest[1]);
-                    selectStockSingleProductQuery += idSingleProduct;
+                    if (Int32.TryParse(Char.ToString(arduinoRequest[1]), out temp)) {
+                        idSingleProduct = Char.ToString(arduinoRequest[1]);
+                        selectStockSingleProductQuery += idSingleProduct;
 
-                    MySqlParameters.mySqlCommand = new MySqlCommand(selectStockSingleProductQuery, MySqlParameters.mySqlConnection);
-                    MySqlParameters.mySqlCommand.CommandTimeout = 60;
+                        MySqlParameters.mySqlCommand = new MySqlCommand(selectStockSingleProductQuery, MySqlParameters.mySqlConnection);
+                        MySqlParameters.mySqlCommand.CommandTimeout = 60;
 
-                    MySqlParameters.dataReader = MySqlParameters.mySqlCommand.ExecuteReader();
+                        MySqlParameters.dataReader = MySqlParameters.mySqlCommand.ExecuteReader();
 
-                    if (MySqlParameters.dataReader.HasRows)
-                    {
-                        while (MySqlParameters.dataReader.Read())
-                            stockSingleProduct = MySqlParameters.dataReader.GetString(0);
+                        if (MySqlParameters.dataReader.HasRows)
+                        {
+                            while (MySqlParameters.dataReader.Read())
+                                stockSingleProduct = MySqlParameters.dataReader.GetString(0);
 
-                        arduinoSerialPort.Write(stockSingleProduct);
-                    }
-                    else
-                    {
-                        MessageBox.Show("La consulta solicitada no contiene registros.", "Aviso.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            arduinoSerialPort.Write(stockSingleProduct);
+                        }
+                        else
+                        {
+                            MessageBox.Show("La consulta solicitada no contiene registros.", "Aviso.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
                     }
                 }
                 else if(Char.ToString(arduinoRequest[0]) == "C" && arduinoRequest.Length == 2)          //storer fills stock for a single product. . .
