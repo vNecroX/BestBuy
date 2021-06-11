@@ -14,7 +14,7 @@ namespace BestBuy_Proyecto
     public partial class frmCarrito : Form
     {
         public static string Productor;
-        Form Carrito;
+        public Form Carrito;
         public frmCarrito()
         {
             InitializeComponent();
@@ -22,6 +22,7 @@ namespace BestBuy_Proyecto
             label1.Text = "Bienvenido,"+Log.textBox1.Text;
             label2.Text = "Cerrar sesion";
             Carrito = this;
+            
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -59,6 +60,20 @@ namespace BestBuy_Proyecto
             frmLog Lo = new frmLog();
             Lo.Show();
             this.Hide();
+        }
+
+        private void frmCarrito_Load(object sender, EventArgs e)
+        {
+            lblCounter.Text = frmSelectProduct.count.ToString();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            //ClickImagenCarrito
+            CarritoDeCompras carritodecompras = new CarritoDeCompras();
+            carritodecompras.Show();
+            this.Hide();
+
         }
     }
        
