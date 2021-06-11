@@ -60,9 +60,8 @@ void loop() {
     
     if(outgoingChar == 'A'){          //storer requests for all products with no stock, through their ID's. . .   
       Serial.print(outgoingChar);
-      lcd.print(outgoingText);
       delay(1000);
-      outgoingChar = NO_KEY; 
+      outgoingChar = 'A';
       flagIncomingData = true;
     }
     else if(outgoingChar == 'B'|| outgoingChar == 'C'){     

@@ -60,11 +60,11 @@ namespace BestBuy_Proyecto
             try
             {
                 MySqlParameters.startMySqlConnection();
-                MessageBox.Show(arduinoRequest);
+                //MessageBox.Show(arduinoRequest);
                 int temp;
                 if (arduinoRequest == "A")              //storer requests for all products with no stock, through their ID's. . .
                 {
-                    productsWithNoStock = "";
+                    productsWithNoStock = " ";
                     MySqlParameters.mySqlCommand = new MySqlCommand(selectProductsWithNoStockQuery, MySqlParameters.mySqlConnection);
                     MySqlParameters.mySqlCommand.CommandTimeout = 60;
 
@@ -79,7 +79,7 @@ namespace BestBuy_Proyecto
                     }
                     else
                     {
-                        MessageBox.Show("La consulta solicitada no contiene registros.", "Aviso.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        arduinoSerialPort.Write(" ");
                     }
                 }
                 else if (Char.ToString(arduinoRequest[0]) == "B" && arduinoRequest.Length == 2)          //storer requests for a single product, their stock value. . .
@@ -102,7 +102,7 @@ namespace BestBuy_Proyecto
                         }
                         else
                         {
-                            MessageBox.Show("La consulta solicitada no contiene registros.", "Aviso.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            arduinoSerialPort.Write(" ");
                         }
                     }
                 }
