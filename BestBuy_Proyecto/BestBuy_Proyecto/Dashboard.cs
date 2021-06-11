@@ -72,8 +72,13 @@ namespace BestBuy_Proyecto
 
                     if (MySqlParameters.dataReader.HasRows)
                     {
+                        bool flagSend=false;
                         while (MySqlParameters.dataReader.Read())
-                            productsWithNoStock += MySqlParameters.dataReader.GetString(0)+" ";
+                        {
+                            if (flagSend) productsWithNoStock += ", ";
+                            else flagSend = true;
+                            productsWithNoStock += MySqlParameters.dataReader.GetString(0);
+                        }
 
                         arduinoSerialPort.Write(productsWithNoStock);
                     }
