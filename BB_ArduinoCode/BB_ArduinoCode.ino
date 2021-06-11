@@ -89,7 +89,7 @@ void loop() {
     }
     delay(500);
   }
-  else if(flagIncomingData){
+  if(flagIncomingData){
     while(Serial.available() > 0){
       lcd.clear();
 
