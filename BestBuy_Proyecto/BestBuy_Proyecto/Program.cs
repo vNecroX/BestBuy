@@ -16,12 +16,10 @@ namespace BestBuy_Proyecto
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-<<<<<<< HEAD
-            Application.Run(new frmSearch());
-=======
+
 
             Application.Run(new frmCarrito());
->>>>>>> master
+
         }
     }
 }

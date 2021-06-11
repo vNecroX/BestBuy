@@ -11,48 +11,49 @@ using MySql.Data.MySqlClient;
 
 namespace BestBuy_Proyecto
 {
+    
     public partial class frmSelectProduct : Form
-    {
-<<<<<<< HEAD
-        public Form retSearch;
+    {   
         
-        int productID;
-        string selectProductPriceQuery = "SELECT PRECIO_PRODUCTO FROM PRODUCTO WHERE ID_PRODUCTO=";
+        
+        
+        public static int count = 0;
+        string productID;
+        string selectProductPriceQuery ;
         float price;
+        string productName;
         
-        
-        public frmSelectProduct(Form search, int _productID)
+
+        public frmSelectProduct(Form frmCarrito, string _productID)
         {
             InitializeComponent();
-            retSearch = search;
+           
             productID = _productID;
-            selectProductPriceQuery += productID.ToString();
-
-
+            
         }
-                
+
 
         private void lblReturn_Click(object sender, EventArgs e)
         {
-            retSearch.Show();
+            
+            frmCarrito frmCarrito = new frmCarrito();
+            frmCarrito.Show();
             this.Hide();
-=======
-        string productor2;
-        private Form retSearch;
-        public frmSelectProduct(Form form, string _Productor2)
-        {
-            InitializeComponent();
-            retSearch = form;
-            productor2 = _Productor2;
->>>>>>> master
+            
         }
+
 
         private void frmSelectProduct_Load(object sender, EventArgs e)
         {
-<<<<<<< HEAD
+            //var source = new BindingSource(); 
+       
+        
+        selectProductPriceQuery = "SELECT PRECIO_PRODUCTO FROM PRODUCTO WHERE ID_PRODUCTO=";
+            selectProductPriceQuery += productID;
             
             try
             {
+                    
                 MySqlParameters.startMySqlConnection();
 
                 MySqlParameters.mySqlCommand = new MySqlCommand(selectProductPriceQuery, MySqlParameters.mySqlConnection);
@@ -65,7 +66,7 @@ namespace BestBuy_Proyecto
                 {
                     MySqlParameters.dataReader.Read();
                     price = MySqlParameters.dataReader.GetFloat(0);
-
+                                       
                 }
                 else
                 {
@@ -86,27 +87,27 @@ namespace BestBuy_Proyecto
             lblPrice.Text = price.ToString();
 
 
-            if (productID == 1)
+            if (productID == "1")
             {
                 pictureBoxProduct.Image = BestBuy_Proyecto.Properties.Resources.mac;
             }
-            if(productID==2 )
+            if(productID=="2" )
             {
                 pictureBoxProduct.Image = BestBuy_Proyecto.Properties.Resources.HPEspectre;
             }
-            if (productID == 3)
+            if (productID == "3")
             {
                 pictureBoxProduct.Image = BestBuy_Proyecto.Properties.Resources.LGThin;
             }
-            if (productID == 4)
+            if (productID == "4")
             {
                 pictureBoxProduct.Image = BestBuy_Proyecto.Properties.Resources.EstantePlegable;
             }
-            if (productID == 5)
+            if (productID == "5")
             {
                 pictureBoxProduct.Image = BestBuy_Proyecto.Properties.Resources.MouseSteren;
             }
-            if (productID == 6)
+            if (productID == "6")
             {
                 pictureBoxProduct.Image = BestBuy_Proyecto.Properties.Resources.Adata;
             }
@@ -119,9 +120,48 @@ namespace BestBuy_Proyecto
 
             lblOpTotal.Text = TotalPrice.ToString();
 
-=======
->>>>>>> master
-
         }
+
+        private void pictureBoxMarketCar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Producto añadido", "Notificación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            
+
+            
+           
+            productName = "SELECT NOMBRE_PRODUCTO FROM PRODUCTO WHERE ID_PRODUCTO=";
+            productName += productID;
+
+
+            MySqlParameters.startMySqlConnection();
+
+            MySqlParameters.mySqlCommand = new MySqlCommand(productName, MySqlParameters.mySqlConnection);
+
+            MySqlParameters.mySqlCommand.CommandTimeout = 60;
+
+            MySqlParameters.dataReader = MySqlParameters.mySqlCommand.ExecuteReader();
+            
+            if (MySqlParameters.dataReader.HasRows)
+            {
+                MySqlParameters.dataReader.Read();
+                string name = MySqlParameters.dataReader.GetString(0);
+                MessageBox.Show(name);
+
+               
+            }
+            else
+            {
+                MessageBox.Show("Nombre no disponible", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
+            MySqlParameters.dataReader.Close();
+
+            MySqlParameters.mySqlConnection.Close();
+
+            count++;
+
+            
+    }
     }
 }
