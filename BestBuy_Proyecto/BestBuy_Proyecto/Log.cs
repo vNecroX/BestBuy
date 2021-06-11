@@ -80,5 +80,10 @@ namespace BestBuy_Proyecto
             frmRegistro.Show();
             this.Hide();
         }
+
+        private void frmLog_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -211,7 +211,7 @@
             // 
             // arduinoSerialPort
             // 
-            this.arduinoSerialPort.PortName = "COM5";
+            this.arduinoSerialPort.PortName = "COM3";
             this.arduinoSerialPort.ReadTimeout = 2000;
             // 
             // frmDashboard

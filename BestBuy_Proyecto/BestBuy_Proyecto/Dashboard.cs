@@ -41,7 +41,7 @@ namespace BestBuy_Proyecto
 
         public void arduinoSerial()
         {
-            arduinoSerialPort.PortName = "COM5";
+            arduinoSerialPort.PortName = "COM3";
             arduinoSerialPort.BaudRate = 9600;
             arduinoSerialPort.DataReceived += new SerialDataReceivedEventHandler(SerialPortListener);
             arduinoSerialPort.Open();

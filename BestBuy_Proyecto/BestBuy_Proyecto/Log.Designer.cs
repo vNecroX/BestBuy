@@ -124,6 +124,7 @@ namespace BestBuy_Proyecto
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmLog";
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.frmLog_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
