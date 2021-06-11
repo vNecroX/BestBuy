@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDashboard));
             this.pnlDashboard = new System.Windows.Forms.Panel();
             this.lblLog = new System.Windows.Forms.Label();
             this.lblProducto = new System.Windows.Forms.Label();
@@ -43,6 +45,7 @@
             this.lblHMusers = new System.Windows.Forms.Label();
             this.lblHMproducts = new System.Windows.Forms.Label();
             this.lblAddWorker = new System.Windows.Forms.Label();
+            this.arduinoSerialPort = new System.IO.Ports.SerialPort(this.components);
             this.pnlDashboard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxLog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxProduct)).BeginInit();
@@ -84,7 +87,7 @@
             // 
             // picBoxLog
             // 
-            this.picBoxLog.Image = global::BestBuy_Proyecto.Properties.Resources.aTable;
+            this.picBoxLog.Image = ((System.Drawing.Image)(resources.GetObject("picBoxLog.Image")));
             this.picBoxLog.Location = new System.Drawing.Point(24, 144);
             this.picBoxLog.Name = "picBoxLog";
             this.picBoxLog.Size = new System.Drawing.Size(91, 62);
@@ -95,7 +98,7 @@
             // 
             // picBoxProduct
             // 
-            this.picBoxProduct.Image = global::BestBuy_Proyecto.Properties.Resources.aLaptop1;
+            this.picBoxProduct.Image = ((System.Drawing.Image)(resources.GetObject("picBoxProduct.Image")));
             this.picBoxProduct.InitialImage = null;
             this.picBoxProduct.Location = new System.Drawing.Point(24, 22);
             this.picBoxProduct.Name = "picBoxProduct";
@@ -107,7 +110,7 @@
             // 
             // picBoxProducts
             // 
-            this.picBoxProducts.Image = global::BestBuy_Proyecto.Properties.Resources.aLaptop2;
+            this.picBoxProducts.Image = ((System.Drawing.Image)(resources.GetObject("picBoxProducts.Image")));
             this.picBoxProducts.InitialImage = null;
             this.picBoxProducts.Location = new System.Drawing.Point(526, 78);
             this.picBoxProducts.Name = "picBoxProducts";
@@ -118,7 +121,7 @@
             // 
             // picBoxUsers
             // 
-            this.picBoxUsers.Image = global::BestBuy_Proyecto.Properties.Resources.aUser;
+            this.picBoxUsers.Image = ((System.Drawing.Image)(resources.GetObject("picBoxUsers.Image")));
             this.picBoxUsers.InitialImage = null;
             this.picBoxUsers.Location = new System.Drawing.Point(372, 87);
             this.picBoxUsers.Name = "picBoxUsers";
@@ -129,7 +132,7 @@
             // 
             // picBoxWorkers
             // 
-            this.picBoxWorkers.Image = global::BestBuy_Proyecto.Properties.Resources.aWorker;
+            this.picBoxWorkers.Image = ((System.Drawing.Image)(resources.GetObject("picBoxWorkers.Image")));
             this.picBoxWorkers.InitialImage = null;
             this.picBoxWorkers.Location = new System.Drawing.Point(220, 82);
             this.picBoxWorkers.Name = "picBoxWorkers";
@@ -206,6 +209,11 @@
             this.lblAddWorker.Text = "+";
             this.lblAddWorker.Click += new System.EventHandler(this.lblAddWorker_Click);
             // 
+            // arduinoSerialPort
+            // 
+            this.arduinoSerialPort.PortName = "COM5";
+            this.arduinoSerialPort.ReadTimeout = 2000;
+            // 
             // frmDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -226,6 +234,7 @@
             this.Name = "frmDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmDashboard_FormClosing);
             this.Load += new System.EventHandler(this.frmDashboard_Load);
             this.VisibleChanged += new System.EventHandler(this.frmDashboard_VisibleChanged);
             this.pnlDashboard.ResumeLayout(false);
@@ -256,6 +265,7 @@
         private System.Windows.Forms.Label lblHMusers;
         private System.Windows.Forms.Label lblHMproducts;
         private System.Windows.Forms.Label lblAddWorker;
+        private System.IO.Ports.SerialPort arduinoSerialPort;
     }
 }
 
