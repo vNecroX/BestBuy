@@ -2,13 +2,13 @@
 #include <LiquidCrystal.h>
 
 #define EN_pin 2
-#define RS_pin 0
+#define RS_pin 3
 #define D4_pin 4
 #define D5_pin 5
 #define D6_pin 6
 #define D7_pin 7
 
-LiquidCrystal lcd(EN_pin, RS_pin, D4_pin, D5_pin, D6_pin, D7_pin);
+LiquidCrystal lcd(RS_pin, EN_pin, D4_pin, D5_pin, D6_pin, D7_pin);
 
 const byte rows = 4;
 const byte cols = 4;
@@ -20,18 +20,19 @@ char keys[rows][cols] = {
   {'*','0','#','D'}
 };
 
-byte rowPins[rows] = {40, 41, 42, 43};
-byte colPins[cols] = {44, 45, 46, 47};
+byte rowPins[rows] = {11, 10, 9, 8};
+byte colPins[cols] = {A1, A0, 13, 12};
 
 Keypad keyp = Keypad(makeKeymap(keys), rowPins, colPins, rows, cols);
 
-char outgoingChar = ' ';
+char outgoingChar = NO_KEY;
 char auxOutgoingChar;
 String outgoingText;
 String complOutgoingText;
+bool flagIncomingData = false;
 
 char incomingChar;
-String incomingText;
+String incomingText = "";
 
 int opt = 1; 
 
@@ -43,18 +44,25 @@ void setup() {
 
 void loop() {
   menu();
+  for(int i=0;i<200; i++){
+    if(outgoingChar==NO_KEY)outgoingChar = keyp.getKey();
+    else break;
+    delay(10);
+  }
   
-  outgoingChar = keyp.getKey();
-  
-  if(outgoingChar != ' '){
+  if(outgoingChar != NO_KEY && flagIncomingData == false){
     lcd.clear();
     
     outgoingText = (String)outgoingChar;
     lcd.print(outgoingText);
+    delay(500);
+    lcd.clear();
     
     if(outgoingChar == 'A'){          //storer requests for all products with no stock, through their ID's. . .   
       Serial.print(outgoingChar);
-      lcd.print(outgoingText);
+      delay(1000);
+      outgoingChar = 'A';
+      flagIncomingData = true;
     }
     else if(outgoingChar == 'B'|| outgoingChar == 'C'){     
       if(outgoingChar == 'B')         //storer requests for a single product, their stock value. . .
@@ -63,9 +71,9 @@ void loop() {
         lcd.print("P. a llenar: ");
         
       auxOutgoingChar = outgoingChar;
-      outgoingChar = ' '; 
+      outgoingChar = NO_KEY; 
 
-      while(outgoingChar == ' ')
+      while(outgoingChar == NO_KEY)
         outgoingChar = keyp.getKey();
 
       outgoingText = (String)outgoingChar;
@@ -76,35 +84,41 @@ void loop() {
       Serial.print(complOutgoingText);
       lcd.print(outgoingText);
       outgoingChar = auxOutgoingChar;
+      flagIncomingData = true;
+    }else{
+      outgoingChar = NO_KEY;
     }
+    delay(500);
   }
-  else{
+  if(flagIncomingData){
+    
+    lcd.clear();
     while(Serial.available() > 0){
-      lcd.clear();
-      
       incomingChar = Serial.read();
-      incomingText = (String)incomingChar;
-
-      if(outgoingChar == 'A'){
-        lcd.print("P. sin stock son");
-        lcd.setCursor(0,1);
-        lcd.print(incomingText);
-        lcd.print(" ");
-      }
-      else if(outgoingChar == 'B'){
-        lcd.print("P. elegido tiene");
-        lcd.setCursor(0,1);
-        lcd.print("stock de: ");
-        lcd.print(incomingText);
-      }
-      else if(incomingChar == 'C')
-        lcd.print("Stock P. llenado");
-
-      outgoingChar = ' ';
-      incomingChar = ' ';
+      incomingText += (String)incomingChar;
     }
+
+    if(outgoingChar == 'A'){
+      lcd.print("P. sin stock son");
+      lcd.setCursor(0,1);
+      lcd.print(incomingText);
+      lcd.print(" ");
+    }
+    else if(outgoingChar == 'B'){
+      lcd.print("P. elegido tiene");
+      lcd.setCursor(0,1);
+      lcd.print("stock de: ");
+      lcd.print(incomingText);
+    }
+    else if(incomingChar == 'C')
+      lcd.print("Stock P. llenado");
+
+    outgoingChar = NO_KEY;
+    incomingChar = NO_KEY;
   }
-  delay(1000);
+  flagIncomingData = false;
+  incomingText = "";
+  delay(2000);
 }
 
 void menu(){
@@ -120,5 +134,4 @@ void menu(){
   }
  
   opt++;
-  delay(500);
 }

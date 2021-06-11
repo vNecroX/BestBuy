@@ -45,7 +45,25 @@ namespace BestBuy_Proyecto
                 }
                 else
                 {
-                    MessageBox.Show("A ocurrido un error intentelo mas tarde");
+                    MySqlParameters.dataReader.Close();
+                    MySqlParameters.mySqlCommand = new MySqlCommand("SELECT * FROM empleado WHERE nombre_empleado= '" + textBox1.Text + "'AND pssw_empleado= '" + textBox2.Text + "'", MySqlParameters.mySqlConnection);
+                    MySqlParameters.mySqlCommand.CommandTimeout = 60;
+
+                    MySqlParameters.dataReader = MySqlParameters.mySqlCommand.ExecuteReader();
+
+                    if (MySqlParameters.dataReader.HasRows)
+                    {
+                        while (MySqlParameters.dataReader.Read())
+                        {
+                            MessageBox.Show("Haz ingresado");
+
+                            frmDashboard frmDashboard1 = new frmDashboard();
+                            frmDashboard1.Show();
+                            this.Close();
+
+                        }
+                    }else
+                        MessageBox.Show("A ocurrido un error intentelo mas tarde");
                 }
 
                 MySqlParameters.dataReader.Close();
