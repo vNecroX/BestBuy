@@ -114,9 +114,8 @@ namespace BestBuy_Proyecto
 
                     arduinoSerialPort.Write("C");
                 }
-                
-                if(!MySqlParameters.dataReader.IsClosed)
-                    MySqlParameters.dataReader.Close();
+
+                MySqlParameters.dataReader.Close();
 
                 MySqlParameters.mySqlConnection.Close();
 
