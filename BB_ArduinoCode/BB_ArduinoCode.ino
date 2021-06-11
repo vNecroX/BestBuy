@@ -91,33 +91,33 @@ void loop() {
     delay(500);
   }
   if(flagIncomingData){
+    
+    lcd.clear();
     while(Serial.available() > 0){
-      lcd.clear();
-
       incomingChar = Serial.read();
       incomingText += (String)incomingChar;
-
-      if(outgoingChar == 'A'){
-        lcd.print("P. sin stock son");
-        lcd.setCursor(0,1);
-        lcd.print(incomingText);
-        lcd.print(" ");
-      }
-      else if(outgoingChar == 'B'){
-        lcd.print("P. elegido tiene");
-        lcd.setCursor(0,1);
-        lcd.print("stock de: ");
-        lcd.print(incomingText);
-      }
-      else if(incomingChar == 'C')
-        lcd.print("Stock P. llenado");
-
-      outgoingChar = NO_KEY;
-      incomingChar = NO_KEY;
     }
-    flagIncomingData = false;
-    incomingText = "";
+
+    if(outgoingChar == 'A'){
+      lcd.print("P. sin stock son");
+      lcd.setCursor(0,1);
+      lcd.print(incomingText);
+      lcd.print(" ");
+    }
+    else if(outgoingChar == 'B'){
+      lcd.print("P. elegido tiene");
+      lcd.setCursor(0,1);
+      lcd.print("stock de: ");
+      lcd.print(incomingText);
+    }
+    else if(incomingChar == 'C')
+      lcd.print("Stock P. llenado");
+
+    outgoingChar = NO_KEY;
+    incomingChar = NO_KEY;
   }
+  flagIncomingData = false;
+  incomingText = "";
   delay(2000);
 }
 
