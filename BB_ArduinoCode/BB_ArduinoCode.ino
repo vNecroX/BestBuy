@@ -85,6 +85,8 @@ void loop() {
       lcd.print(outgoingText);
       outgoingChar = auxOutgoingChar;
       flagIncomingData = true;
+    }else{
+      outgoingChar = NO_KEY;
     }
     delay(500);
   }
@@ -115,8 +117,8 @@ void loop() {
     }
     flagIncomingData = false;
     incomingText = "";
-    delay(2000);
   }
+  delay(2000);
 }
 
 void menu(){

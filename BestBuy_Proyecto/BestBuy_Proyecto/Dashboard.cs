@@ -86,17 +86,16 @@ namespace BestBuy_Proyecto
                 {
                     if (Int32.TryParse(Char.ToString(arduinoRequest[1]), out temp)) {
                         idSingleProduct = Char.ToString(arduinoRequest[1]);
-                        selectStockSingleProductQuery += idSingleProduct;
 
-                        MySqlParameters.mySqlCommand = new MySqlCommand(selectStockSingleProductQuery, MySqlParameters.mySqlConnection);
+                        MySqlParameters.mySqlCommand = new MySqlCommand(selectStockSingleProductQuery + idSingleProduct, MySqlParameters.mySqlConnection);
                         MySqlParameters.mySqlCommand.CommandTimeout = 60;
 
                         MySqlParameters.dataReader = MySqlParameters.mySqlCommand.ExecuteReader();
 
                         if (MySqlParameters.dataReader.HasRows)
                         {
-                            while (MySqlParameters.dataReader.Read())
-                                stockSingleProduct = MySqlParameters.dataReader.GetString(0);
+                            MySqlParameters.dataReader.Read();
+                            stockSingleProduct = MySqlParameters.dataReader.GetString(0);
 
                             arduinoSerialPort.Write(stockSingleProduct);
                         }
