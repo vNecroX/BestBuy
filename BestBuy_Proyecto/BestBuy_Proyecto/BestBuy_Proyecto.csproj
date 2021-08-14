@@ -54,11 +54,12 @@
     <Compile Include="AddWorker.Designer.cs">
       <DependentUpon>AddWorker.cs</DependentUpon>
     </Compile>
-    <Compile Include="Carrito.cs">
+    <Compile Include="ProductSearch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Carrito.Designer.cs">
-      <DependentUpon>Carrito.cs</DependentUpon>
+    <Compile Include=".Designer.cs">
+      <DependentUpon>ProductSearch.cs</DependentUpon>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
@@ -66,17 +67,17 @@
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="CarritoDeCompras.cs">
+    <Compile Include="BuyShopCart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CarritoDeCompras.Designer.cs">
-      <DependentUpon>CarritoDeCompras.cs</DependentUpon>
+    <Compile Include="BuyShopCart.Designer.cs">
+      <DependentUpon>BuyShopCart.cs</DependentUpon>
     </Compile>
-    <Compile Include="Log.cs">
+    <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Log.Designer.cs">
-      <DependentUpon>Log.cs</DependentUpon>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Registro.cs">
       <SubType>Form</SubType>
@@ -99,26 +100,26 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProductSelect.cs">
+    <Compile Include="ShopCart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProductSelect.Designer.cs">
-      <DependentUpon>ProductSelect.cs</DependentUpon>
+    <Compile Include="ShopCart.Designer.cs">
+      <DependentUpon>ShopCart.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AddWorker.resx">
       <DependentUpon>AddWorker.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Carrito.resx">
-      <DependentUpon>Carrito.cs</DependentUpon>
+    <EmbeddedResource Include="ProductSearch.resx">
+      <DependentUpon>ProductSearch.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CarritoDeCompras.resx">
-      <DependentUpon>CarritoDeCompras.cs</DependentUpon>
+    <EmbeddedResource Include="BuyShopCart.resx">
+      <DependentUpon>BuyShopCart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Log.resx">
-      <DependentUpon>Log.cs</DependentUpon>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registro.resx">
       <DependentUpon>Registro.cs</DependentUpon>
@@ -134,8 +135,8 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductSelect.resx">
-      <DependentUpon>ProductSelect.cs</DependentUpon>
+    <EmbeddedResource Include="ShopCart.resx">
+      <DependentUpon>ShopCart.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

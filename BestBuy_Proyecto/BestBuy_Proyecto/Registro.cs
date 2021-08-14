@@ -39,7 +39,7 @@ namespace BestBuy_Proyecto
                         MessageBox.Show("Intentelo nuevamente" + ex.Message);
                     }
                 MySqlParameters.mySqlConnection.Close();
-                frmCarrito frmCarrito = new frmCarrito();
+                frmProductSearch frmCarrito = new frmProductSearch();
                 frmCarrito.Show();
                 this.Hide();
             }
